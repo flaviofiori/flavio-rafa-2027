@@ -37,8 +37,8 @@
     el.style.visibility = "visible";
     queue.push({ el: el, chars: chars });
   });
-  var speed = 45,
-    pause = 320;
+  var speed = 28,
+    pause = 160;
   function typeItem(k) {
     if (k >= queue.length) {
       setTimeout(function () {
@@ -64,5 +64,5 @@
   }
   setTimeout(function () {
     typeItem(0);
-  }, 3900);
+  }, 1000);
 })();

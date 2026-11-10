@@ -276,10 +276,10 @@ h2 {
 }
 .dog-track {
   position: absolute;
-  top: -26px;
+  top: -42px;
   left: 50%;
   width: min(480px, 100% - 32px);
-  height: 27px;
+  height: 43px; /* 16px headroom for the jump */
   transform: translateX(-50%);
   overflow: hidden;
   pointer-events: none;
@@ -288,50 +288,24 @@ h2 {
   position: absolute;
   left: 0;
   bottom: 0;
-  animation: dog-walk 30s ease-in-out infinite;
+  will-change: transform;
+}
+.dog-runner.live {
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 .dog {
   display: block;
-  animation: dog-turn 30s infinite;
 }
+/* Movement is driven by main.js */
 .dog-leg {
   transform-box: fill-box;
   transform-origin: top center;
-  animation: dog-step 0.36s ease-in-out infinite alternate;
-}
-.dog-leg.alt {
-  animation-delay: -0.36s;
 }
 .dog-tail {
   transform-origin: -12px -8px;
-  animation: dog-wag 0.3s ease-in-out infinite alternate;
 }
-@keyframes dog-walk {
-  0%, 4% { left: 0; }
-  46%, 54% { left: calc(100% - 63px); }
-  96%, 100% { left: 0; }
-}
-@keyframes dog-turn {
-  0%, 49.9% { transform: scaleX(1); }
-  50%, 100% { transform: scaleX(-1); }
-}
-@keyframes dog-step {
-  from { transform: rotate(-22deg); }
-  to { transform: rotate(22deg); }
-}
-@keyframes dog-wag {
-  from { transform: rotate(-14deg); }
-  to { transform: rotate(18deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .dog-runner,
-  .dog,
-  .dog-leg,
-  .dog-tail {
-    animation: none;
-  }
-}
-
 .timeline {
   width: 100%;
   display: grid;

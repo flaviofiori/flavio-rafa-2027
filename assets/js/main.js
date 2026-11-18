@@ -1,19 +1,4 @@
 (function () {
-  var btn = document.getElementById("menu-btn"),
-    links = document.getElementById("nav-links");
-  btn.addEventListener("click", function () {
-    var open = links.classList.toggle("open");
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-    btn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-  });
-  links.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") {
-      links.classList.remove("open");
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-label", "Abrir menu");
-    }
-  });
-
   // Typewriter for the hero details
   if (!document.documentElement.classList.contains("intro")) return;
   var els = [].slice.call(document.querySelectorAll("[data-type]"));

@@ -78,7 +78,7 @@ button:focus-visible {
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 24px;
   max-width: 1200px;
   width: 100%;
@@ -86,23 +86,9 @@ button:focus-visible {
   box-sizing: border-box;
   padding-block: 32px;
 }
-.nav-logo {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  min-height: 44px;
-  font-family: var(--script);
-  font-size: 44px;
-  line-height: 44px;
-  white-space: nowrap;
-  text-decoration: none;
-  color: var(--light);
-}
-.nav-logo .amp {
-  font-size: 26px;
-}
 .nav-links {
   display: flex;
+  justify-content: center;
   gap: 36px;
   flex-wrap: wrap;
   font-size: 13px;
@@ -115,18 +101,6 @@ button:focus-visible {
 }
 .nav-links a:hover {
   color: var(--gold);
-}
-.menu-btn {
-  display: none;
-  background: none;
-  border: 0;
-  color: var(--light);
-  width: 44px;
-  height: 44px;
-  cursor: pointer;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
 }
 .hero-inner {
   position: relative;
@@ -498,35 +472,8 @@ footer .meta {
   .hero {
     min-height: 720px;
   }
-  .menu-btn {
-    display: inline-flex;
-  }
   .nav {
-    flex-wrap: wrap;
-    padding-block: 20px;
-  }
-  .nav-logo {
-    font-size: 34px;
-    gap: 8px;
-  }
-  .nav-logo .amp {
-    font-size: 20px;
-  }
-  .nav-links {
     display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 0;
-    background: rgba(31, 10, 14, 0.92);
-    padding: 8px 16px;
-    box-sizing: border-box;
-  }
-  .nav-links.open {
-    display: flex;
-  }
-  .nav-links a {
-    border-bottom: 1px solid rgba(246, 237, 230, 0.15);
-    padding-block: 14px;
   }
   .logo svg {
     width: 200px;

@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
@@ -17,12 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script>
-      try {
-        if (!matchMedia("(prefers-reduced-motion: reduce)").matches)
-          document.documentElement.classList.add("intro");
-      } catch (e) {}
-    </script>
+    <script src="assets/js/intro.js"></script>
   </head>
   <body>
     <header class="hero">
@@ -55,7 +55,7 @@
         <div class="nav-links" id="nav-links">
           <a href="#historia">Nossa história</a>
           <a href="#cerimonia">Cerimônia</a>
-          <a href="https://site.lejour.com.br/lista-de-presentes/flavio-e-rafaela-2027" target="_blank">Presentes</a>
+          <a href="https://site.lejour.com.br/lista-de-presentes/flavio-e-rafaela-2027" target="_blank" rel="noopener noreferrer">Presentes</a>
           <a href="#confirmacao">Confirmação</a>
         </div>
       </nav>
@@ -328,7 +328,7 @@
             Sua presença é o nosso maior presente. Se quiser nos presentear,
             preparamos uma lista com muito carinho.
           </p>
-          <a href="https://site.lejour.com.br/lista-de-presentes/flavio-e-rafaela-2027" target="_blank" class="btn">Ver a lista</a>
+          <a href="https://site.lejour.com.br/lista-de-presentes/flavio-e-rafaela-2027" target="_blank" rel="noopener noreferrer" class="btn">Ver a lista</a>
         </div>
       </section>
 

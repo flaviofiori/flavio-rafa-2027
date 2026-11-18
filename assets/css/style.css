@@ -664,3 +664,172 @@ footer .meta {
   box-shadow: 1px 0 0 currentColor;
   animation: blink 0.8s steps(1) infinite;
 }
+
+/* Floating gift balloon -> gift list */
+.gift-fab {
+  position: fixed;
+  z-index: 50;
+  right: max(20px, env(safe-area-inset-right, 0px));
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.gift-bubble {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--marsala);
+  border: 1px solid rgba(230, 201, 168, 0.55);
+  box-shadow: 0 10px 24px -8px rgba(31, 10, 14, 0.55),
+    0 2px 6px rgba(31, 10, 14, 0.25);
+  transition: background 0.2s;
+}
+/* Soft halo ring */
+.gift-bubble::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  pointer-events: none;
+}
+.gift-bubble svg {
+  display: block;
+  overflow: visible;
+}
+.gift-lid {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+}
+.gift-label {
+  padding: 10px 16px;
+  background: var(--cream);
+  color: var(--marsala);
+  border: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px -10px rgba(31, 10, 14, 0.5);
+  opacity: 0;
+  transform: translateX(8px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.gift-fab:hover .gift-bubble,
+.gift-fab:focus-visible .gift-bubble {
+  background: var(--marsala-deep);
+}
+.gift-fab:hover .gift-label,
+.gift-fab:focus-visible .gift-label {
+  opacity: 1;
+  transform: none;
+}
+.gift-fab:focus-visible {
+  outline: none;
+}
+.gift-fab:focus-visible .gift-bubble {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+@media (hover: none) {
+  .gift-label {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .gift-bubble {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrance: rises and pops in once the hero intro has settled */
+  .gift-fab {
+    animation: gift-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 2.6s both;
+  }
+  /* Ongoing: gentle float, periodic lid wiggle and halo pulse */
+  .gift-bubble {
+    animation: gift-float 3.6s ease-in-out 3.5s infinite;
+  }
+  .gift-bubble::before {
+    animation: gift-halo 4.8s ease-out 4s infinite;
+  }
+  .gift-lid {
+    animation: gift-lid 4.8s ease-in-out 4s infinite;
+  }
+  .gift-fab:hover .gift-bubble {
+    animation-play-state: paused;
+  }
+  .gift-bubble svg {
+    transition: transform 0.25s ease;
+  }
+  .gift-fab:hover .gift-bubble svg {
+    transform: scale(1.12);
+  }
+}
+@keyframes gift-in {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.4) rotate(-12deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes gift-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+@keyframes gift-lid {
+  0%,
+  70%,
+  100% {
+    transform: none;
+  }
+  76% {
+    transform: translateY(-3px) rotate(-10deg);
+  }
+  82% {
+    transform: translateY(-1px) rotate(4deg);
+  }
+  88% {
+    transform: translateY(-2px) rotate(-6deg);
+  }
+  94% {
+    transform: none;
+  }
+}
+@keyframes gift-halo {
+  0%,
+  68% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  72% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
